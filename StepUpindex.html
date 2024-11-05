@@ -54,7 +54,9 @@
                     </div>
                     <div class="post-footer">
                         <span class="post-date">Apr 14, 2023</span>
-                        <span class="post-likes">4.8K Likes</span>
+                        <button class="like-button" onclick="likePost(this)">
+                            ❤️ <span class="like-count">0</span>
+                        </button>                        
                     </div>
                 </div>
     
@@ -71,7 +73,10 @@
                     </div>
                     <div class="post-footer">
                         <span class="post-date">May 10, 2023</span>
-                        <span class="post-likes">3.5K Likes</span>
+                        <button class="like-button" onclick="likePost(this)">
+                            ❤️ <span class="like-count">0</span>
+                        </button>
+                        
                     </div>
                 </div>
         
@@ -88,7 +93,10 @@
                     </div>
                     <div class="post-footer">
                         <span class="post-date">Jun 5, 2023</span>
-                        <span class="post-likes">5.2K Likes</span>
+                        <button class="like-button" onclick="likePost(this)">
+                            ❤️ <span class="like-count">0</span>
+                        </button>
+                        
                     </div>
                 </div>
         
@@ -105,7 +113,10 @@
                     </div>
                     <div class="post-footer">
                         <span class="post-date">Jul 1, 2023</span>
-                        <span class="post-likes">6.0K Likes</span>
+                        <button class="like-button" onclick="likePost(this)">
+                            ❤️ <span class="like-count">0</span>
+                        </button>
+                        
                     </div>
                 </div>
             </div>
@@ -143,10 +154,31 @@
                 </ul>
             </div>
         </div>
-
         <footer>
+            <div class="footer">
+                <p class="footer-content">Webpage Designed by Maanya and Team</p>
+                <p class="footer-content"><a href="contact.html" onclick="ContactUs(this)">Contact Us</a></p>
+            </div>
 
         </footer>
+        <script src="script1.js"></script>
     </main>
+
+    <!-- admin_update_post.html 
+ <form action="update_post.php" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="post_id" value="1"> 
+
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" required>
+
+    <label for="content">Content:</label>
+    <textarea name="content" id="content" required></textarea>
+
+    <label for="image">Upload Image:</label>
+    <input type="file" name="image" id="image" accept="image/*">
+
+    <button type="submit">Update Post</button>
+</form> -->
+
 </body>
 </html>
