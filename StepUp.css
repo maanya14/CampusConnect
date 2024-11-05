@@ -1,5 +1,7 @@
 body{
     background-color: #F5F5CB;
+    padding: 0;
+    margin: 0;
 }
 header{
     margin: 0;
@@ -100,6 +102,7 @@ header{
 .left-column {
     width: 70%;  
     margin-right: 20px;  
+    padding: 20px;
    
 }
 
@@ -146,7 +149,7 @@ header{
 
 .left-column {
     margin-bottom: 40px;
-    margin-top: 130px;
+    margin-top: 110px;
 }
 
 .special-places {
@@ -295,4 +298,50 @@ header{
     justify-content: space-between;
     background-color: #F5F5DC;
     border-top: 1px solid #ddd;
+}
+
+footer {
+    background-color:#7B0A0A; 
+    width: 100%;
+    bottom: 0;
+    left: 0; 
+    padding: 0;
+    overflow-x: hidden;
+    
+}
+
+.footer {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly; 
+    align-items: center; 
+}
+
+.footer-content {
+    margin: 0; 
+    color: white;
+}
+.footer-content a{
+    text-decoration: none;
+    color: white;
+}
+.like-button {
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s;
+}
+
+.like-button:hover, .like-button.liked {
+    color: #e0245e; 
+}
+
+.like-count {
+    font-weight: bold;
 }
