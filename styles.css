@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light gray background */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    background-image: url(audi.png);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  /* Make sure the body takes up full viewport height */
+    margin: 0;  /* Remove default margin */
+}
+#back{
+    background-color: black;
+opacity: 50%;
+}
+#heading {
+opacity: 100%;
+font-size: 500%;
+    color:#ffffff;
+    text-align: center; /* Center the heading text */
+    margin-top: 20px; /* Space above the heading */
+}
+#heading:hover{
+    color: rgb(187, 148, 87);
+    
+}
+  
+  .loginbox {
+    display: flex;
+    flex-direction: column; /* Stack the form elements vertically */
+    justify-content: center; /* Center the elements vertically */
+    align-items: center; /* Center the elements horizontally */
+    padding: 20px; /* Padding inside the box */
+    border-radius: 8px; /* Rounded corners */
+    width: 300px; /* Set a width for the box */
+    background-color: white; /* Background color for the box */
+    text-align: center; /* Center the text inside the box */
+  }
+input[type="text"],
+input[type="password"] {
+   background-color:#7B0A0A ;
+    width: 90%; /* Full width */
+    padding: 10px; /* Padding inside the input */
+    margin: 10px 0; /* Margin for spacing */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+input[type="submit"] {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside the button */
+    background-color: #7B0A0A; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    margin-top: 10px; /* Space above the button */
+}
+
+input[type="submit"]:hover {
+   background-color:#7B0A0A; /* Darker blue on hover */
+}
+form {
+    width: 320px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 10px auto;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    background-color:rgb(250, 237, 205) ;
+    width: 90%; /* Full width */
+    padding: 10px; /* Padding inside the input */
+    margin: 10px 0; /* Margin for spacing */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+form input[type="submit"] {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside the button */
+    background-color: rgb(153, 88, 42); /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    margin-top: 10px; /* Space above the button */
+}
+form input[type="submit"]:hover {
+    background-color: rgb(187, 148, 87); /* Darker blue on hover */
+ }
