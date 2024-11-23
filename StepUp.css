@@ -1,5 +1,5 @@
 body{
-    background-color: #F5F5CB;
+    background-color: white;
     padding: 0;
     margin: 0;
 }
@@ -40,6 +40,23 @@ header{
     font-size: 16px;         
     border-radius: 5px;     
     margin-left: 70px;
+    position: relative;
+    transition: color 0.3s ease;
+} 
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #fff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
 }
 
 .search {
@@ -95,6 +112,7 @@ header{
     border: 1px solid #e0e0e0;  
     border-radius: 8px; 
     background-color: #F5F5DC;  
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 
@@ -135,6 +153,10 @@ header{
     object-fit: contain;
     margin-right: 10px;
     border-radius: 50%;
+}
+.top-companies:hover, .package:hover, .cgpa-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .cta-button {
@@ -194,7 +216,7 @@ header{
 
 
 .top-story{
-    background-image: url(jaypee.jpg);
+    background-image: url(images/jaypee.jpg);
     background-size: cover; 
     background-position: center;
     border-radius: 5px;        
@@ -233,19 +255,21 @@ header{
 .post-card {
     display: flex;
     flex-direction: column;
-    height: 100%; /* Allow content to determine height */
+    height: 100%; 
     background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px; /* Fixed width */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 400px; 
     margin: 20px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
     border: 1px solid black;
 }
 
 .post-card:hover {
     transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .post-header {
@@ -290,14 +314,14 @@ header{
 .post-meta {
     font-size: 14px;
     color: white;
+    opacity: 0.8;
 }
 
 .post-footer {
-    padding: 10px 15px;
+    padding: 10px 10px;
     display: flex;
     justify-content: space-between;
     background-color: #F5F5DC;
-    border-top: 1px solid #ddd;
 }
 
 footer {
@@ -326,20 +350,29 @@ footer {
     text-decoration: none;
     color: white;
 }
+
 .like-button {
     background: none;
     border: none;
-    color: #555;
-    font-size: 16px;
+    color: #7B0A0A;
+    font-size: 1rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 5px;
-    transition: color 0.3s;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
 }
 
-.like-button:hover, .like-button.liked {
-    color: #e0245e; 
+.like-button:hover {
+    color: #e0245e;
+}
+
+.like-button i {
+    transition: transform 0.3s ease;
+}
+
+.like-button:hover i {
+    transform: scale(1.2);
 }
 
 .like-count {
