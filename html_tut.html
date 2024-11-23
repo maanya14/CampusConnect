@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Notes PDF Generator</title>
+</head>
+<body>
+    <div id="content">
+        <h1>HTML Notes</h1>
+        <p>Here are some questions</p>
+        <ul>
+            <li>Introduction to HTML</li>
+            <li>HTML Elements</li>
+            <li>Formatting and Styling</li>
+            <li>Links and Images</li>
+            <li>Tables and Forms</li>
+        </ul>
+        <p>HTML (HyperText Markup Language) is used to structure web pages and web applications.</p>
+    </div>
+    
+    <!-- Button to trigger PDF download -->
+    <button onclick="generatePDF()">Download as PDF</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        function generatePDF() {
+            // Use html2canvas to capture the content as an image
+            html2canvas(document.getElementById("content")).then(canvas => {
+                const imgData = canvas.toDataURL("image/png");
+                const pdf = new jspdf.jsPDF("p", "mm", "a4");
+                
+                // Calculate dimensions for A4 page
+                const imgWidth = 190;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                
+                pdf.addImage(imgData, "PNG", 10, 10, imgWidth, imgHeight);
+                pdf.save("HTML_Notes.pdf");
+            });
+        }
+    </script>
+</body>
+</html>
+
