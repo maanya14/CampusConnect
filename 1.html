@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>LOGIN PAGE</title>
+</head>
+<body>
+<div class="background"></div>
+    <h1 id="heading">Campus Connect</h1>
+    <div class="loginbox">
+        <input type="text" name="username" id="email" placeholder="Enter your email" required>
+        <br>
+        <input type="password" name="password" id="password" placeholder="********" required>
+        <br>
+        <input type="submit" name="submit" id="loginButton" value="Login">
+        <br>
+        <input type="submit" name="signup" id="signupButton" value="Sign Up">
+    </div>
+    <script>
+        document.getElementById('signupButton').addEventListener('click',function(event){
+window.location.href='signup.html';
+        });
+        document.getElementById('loginButton').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Check if the email ends with @mail.jiit.ac.in
+            if (email.endsWith('@mail.jiit.ac.in') && password === 'password123') {
+                window.location.href = '2nd.html';
+                // Redirect or perform other actions here
+            } else if (!email.endsWith('@mail.jiit.ac.in')) {
+                alert("Email must end with @mail.jiit.ac.in.");
+            } 
+                 else {
+                alert('Invalid email or password. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
