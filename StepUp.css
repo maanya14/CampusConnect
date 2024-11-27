@@ -330,31 +330,38 @@ header{
     background-color: #F5F5DC;
 }
 
-footer {
-    background-color:#D2B48C; 
-    width: 100%;
-    bottom: 0;
-    left: 0; 
-    padding: 0;
-    overflow-x: hidden;
-    
-}
 
-.footer {
-    padding: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly; 
-    align-items: center; 
-}
-
-.footer-content {
-    margin: 0; 
-    color: #8B4513;
-}
 .footer-content a{
     text-decoration: none;
     color: #8B4513;
+}
+
+footer {
+    background-color: #D2B48C;
+    width: 100%;
+    color: #8B4513;
+    padding: 10px 0;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links a {
+    color: #8B4513;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: opacity 0.3s;
+}
+
+.social-links a:hover {
+    opacity: 0.8;
 }
 
 .like-button {
