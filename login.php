@@ -11,7 +11,7 @@ $dbname = "campus_connect"; // Database name
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+// Check 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_password = $conn->real_escape_string($user_password);
 
     // Query to check if the email exists and the password matches
-    $sql = "SELECT * FROM alldetails WHERE email = '$email' AND password = '$user_password'";
+    $sql = "SELECT * FROM student WHERE email = '$email' AND password = '$user_password'";
 
     // Execute the query
     $result = $conn->query($sql);
