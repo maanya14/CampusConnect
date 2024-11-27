@@ -17,10 +17,10 @@ header{
 .navbar {
     display: flex;
     position: relative;
-     justify-content: space-between;
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #7B0A0A;
+    background-color: #D2B48C;
     height: 30px;
 }
 
@@ -31,10 +31,13 @@ header{
     flex-grow: 1;  /* Allow nav-links to grow and fill available space */
     margin-left: 20px;  /* Adjust margin for better alignment */
 }
+.nav-links a.active{
+    color: #aa7c3f;
+}
 
 .nav-links a {
     text-decoration: none;
-    color: white;
+    color: #8B4513;
     padding: 10px 15px;     
     font-weight: bold;       
     font-size: 16px;         
@@ -43,6 +46,9 @@ header{
     position: relative;
     transition: color 0.3s ease;
 } 
+.nav-links a:hover{
+    color: #aa7c3f;
+}
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -161,7 +167,7 @@ header{
 
 .cta-button {
     padding: 10px 20px;
-    background-color: #7B0A0A;
+    background-color: #8B4513;
     color: white;
     border: none;
     cursor: pointer;
@@ -230,7 +236,7 @@ header{
     top: 75px; /* Align to the top of the page */
     left: 0; /* Align to the left side */
     width: 100%; /* Full width for the marquee */
-    color: #800000; /* White text for contrast */
+    color: #8B4513; /* White text for contrast */
     padding: 10px 0; /* Padding for spacing */
     text-align: center; /* Center the content */
     font-size: 1.5rem; /* Adjust font size */
@@ -279,7 +285,7 @@ header{
 }
 
 .post-tag {
-    background-color: #7B0A0A;
+    background-color: #8B4513;
     color: white;
     padding: 5px 10px;
     border-radius: 20px;
@@ -325,7 +331,7 @@ header{
 }
 
 footer {
-    background-color:#7B0A0A; 
+    background-color:#D2B48C; 
     width: 100%;
     bottom: 0;
     left: 0; 
@@ -344,11 +350,11 @@ footer {
 
 .footer-content {
     margin: 0; 
-    color: white;
+    color: #8B4513;
 }
 .footer-content a{
     text-decoration: none;
-    color: white;
+    color: #8B4513;
 }
 
 .like-button {

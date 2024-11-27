@@ -6,13 +6,28 @@
     <title>CampusConnect - Home</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        body{
+        background-color: white;
+        padding: 0;
+        margin: 0;
+        }  
         :root {
             --primary-color: #8B4513;
-            --secondary-color: #D2B48C;
+            --secondary-color: #aa7c3f;
             --text-color: #333;
             --background-color: #fcf4e7;
             --sidebar-width: 300px;
         }
+
+        header{
+        margin: 0;
+        z-index: 10;
+        padding: 0;
+        top: 0;
+        left: 300px;
+        width: 1050px;
+        position: fixed;
+}
 
         * {
             margin: 0;
@@ -21,7 +36,6 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--background-color);
@@ -37,7 +51,9 @@
             width: var(--sidebar-width);
             background-color: #ffffff;
             padding: 20px;
+            height: 100%;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
         }
 
         .search-bar {
@@ -126,15 +142,26 @@
         .navbar {
             display: flex;
             justify-content: space-between;
+            position: relative;
             align-items: center;
-            padding: 10px 0;
+            padding: 10px;
+            margin-top: 0px;
             margin-bottom: 20px;
+            background-color: #D2B48C;
         }
 
         .logo img {
-            height: 40px;
+            border-radius: 50%;
+            height: 50px;
         }
 
+        .nav-links {
+        display: flex;           
+        justify-content: space-around;           
+        list-style: none;   
+        flex-grow: 1;  /* Allow nav-links to grow and fill available space */
+        margin-left: 20px;  /* Adjust margin for better alignment */
+}
         .nav-links a {
             margin-left: 20px;
             text-decoration: none;
@@ -147,23 +174,42 @@
             color: var(--secondary-color);
         }
 
+        .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #fff;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+        transform: scaleX(1);
+        }
         h1 {
             margin-bottom: 20px;
             color: var(--primary-color);
         }
 
         .posts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 20px;
         }
 
         .post-box {
             background-color: white;
+            margin-top: 30px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            max-width: 600px;
         }
 
         .post-box:hover {
@@ -173,19 +219,23 @@
 
         .post-image {
             width: 100%;
-            height: 200px;
+            height: auto;
             object-fit: cover;
         }
 
+        .post-content {
+            padding: 5px;
+        }
+
         .post-box h3 {
-            padding: 10px;
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: var(--primary-color);
+            margin: 5px;
         }
 
         .post-box p {
-            padding: 0 10px 10px;
             font-size: 0.9em;
+            margin: 5px;
         }
 
         @media (max-width: 768px) {
@@ -262,12 +312,13 @@
             <header>
                 <nav class="navbar">
                     <div class="logo">
-                        <a href="index.html">
-                            <img src="https://placehold.co/200x50?text=CampusConnect" alt="CampusConnect Logo" id="navlogo">
+                        <a href="1.html">
+                            <img src="images/logo 5.jpg" alt="CampusConnect Logo" id="navlogo">
                         </a>
                     </div>
                     <div class="nav-links">
                         <a href="index.html" class="active">Home</a>
+                        <a href="StepUpindex.html">StepUp</a>
                         <a href="insights.html">Insights</a>
                         <a href="buzz.html">Buzz</a>
                         <a href="profile.html">Profile</a>
