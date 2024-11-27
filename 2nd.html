@@ -1,152 +1,329 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="styling.css">
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.post-box').forEach(box => {
-                box.addEventListener('mouseenter', () => {
-                    const img = box.querySelector('.post-image');
-                    img.style.display = 'block'; // Show the image
-                    setTimeout(() => img.style.opacity = '1', 10); // Fade in the image
-                });
-
-                box.addEventListener('mouseleave', () => {
-                    const img = box.querySelector('.post-image');
-                    img.style.opacity = '0'; // Fade out the image
-                    img.addEventListener('transitionend', () => {
-                        img.style.display = 'none'; // Hide the image after fade out
-                    }, { once: true }); // Ensure this only runs once per transition
-                });
-            });
-        });
-    </script>
-</head>
-<body>
-    <div class="container">
-        <div class="sidebar"> 
-            Search for chats
-            <br>
-            <br>
-            🔍
-            <input type="text" name="chats">
-        </div>
-        <div class="main-content">
-            <h1>Welcome to Home Page</h1>
-            <nav class="navbar">
-                <button>Insight</button>
-                <button>Profile</button>
-                <button>Buzz</button>
-                <button>Set up</button>
-            </nav>
-            <div class="posts">
-                <div class="post-box">Post 1</div>
-                <div class="post-box">Post 2</div>
-                <div class="post-box">Post 3</div>
-                <div class="post-box">Post 4</div>
-            </div>
-        </div>
-    </div>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="styling.css">
-   
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.post-box').forEach(box => {
-                const img = document.createElement('img');
-                img.src = 'audi.png'; // Change this to your image path
-                img.classList.add('post-image');
-                box.appendChild(img);
+    <title>CampusConnect - Home</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2B48C;
+            --text-color: #333;
+            --background-color: #fcf4e7;
+            --sidebar-width: 300px;
+        }
 
-                // Show image on hover (mouseenter)
-                // Hover effect to move the post box
-                box.addEventListener('mouseenter', () => {
-                    box.style.transform = 'translateY(-10px)';  // Moves the post box up on hover
-                });
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-                box.addEventListener('mouseleave', () => {
-                    box.style.transform = 'translateY(0)';  // Resets the position when mouse leaves
-                });
-            });
-        });
-    </script>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 30px 10px 10px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-img img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .chat-section h2 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: var(--primary-color);
+        }
+
+        .chat-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .chat-item:hover {
+            background-color: var(--background-color);
+        }
+
+        .chat-profile-img img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        .chat-name {
+            font-weight: bold;
+        }
+
+        .chat-last-msg {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--secondary-color);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .post-box {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .post-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .post-box h3 {
+            padding: 10px;
+            font-size: 1.2em;
+            color: var(--primary-color);
+        }
+
+        .post-box p {
+            padding: 0 10px 10px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                order: 2;
+            }
+
+            .main-content {
+                order: 1;
+            }
+
+            .nav-links {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .nav-links a {
+                margin: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <!-- Sidebar Section -->
-        <div class="sidebar">
+        <aside class="sidebar">
             <!-- Search Bar -->
             <div class="search-bar">
-                <input type="text" name="chats" placeholder="Search">
-                <span class="search-icon">🔍</span>
+                <input type="text" name="chats" placeholder="Search chats...">
+                <i class="lucide lucide-search"></i>
             </div>
     
             <!-- Profile Section -->
             <div class="profile-section">
                 <div class="profile-img">
-                    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Profile Picture">
+                    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="John Doe">
                 </div>
                 <div class="profile-name">John Doe</div>
             </div>
     
             <!-- Chat Section -->
             <div class="chat-section">
+                <h2>Recent Chats</h2>
                 <div class="chat-item">
                     <div class="chat-profile-img">
-                        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Chat Profile">
+                        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Alice Smith">
                     </div>
                     <div class="chat-info">
-                        <div class="chat-name">Alice</div>
-                        <div class="chat-last-msg">Hey, how are you?</div>
+                        <div class="chat-name">Alice Smith</div>
+                        <div class="chat-last-msg">Hey, how's the project going?</div>
                     </div>
                 </div>
                 <div class="chat-item">
                     <div class="chat-profile-img">
-                        <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Chat Profile">
+                        <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Mike Johnson">
                     </div>
                     <div class="chat-info">
-                        <div class="chat-name">Mike</div>
-                        <div class="chat-last-msg">Got the files, thanks!</div>
+                        <div class="chat-name">Mike Johnson</div>
+                        <div class="chat-last-msg">Thanks for the study notes!</div>
                     </div>
                 </div>
-                <!-- Add more chats as needed -->
             </div>
-        </div>
+        </aside>
 
         <!-- Main Content Section -->
-        <div class="main-content">
-            <h1>Welcome to Home Page</h1>
+        <main class="main-content">
             <header>
                 <nav class="navbar">
                     <div class="logo">
-                        <a href="home.html"><img src="logo 5.jpg" alt="CampusConnect Logo" id="navlogo"></a>
+                        <a href="index.html">
+                            <img src="https://placehold.co/200x50?text=CampusConnect" alt="CampusConnect Logo" id="navlogo">
+                        </a>
                     </div>
                     <div class="nav-links">
-                        <a href="home.html">Home</a>
+                        <a href="index.html" class="active">Home</a>
                         <a href="insights.html">Insights</a>
                         <a href="buzz.html">Buzz</a>
                         <a href="profile.html">Profile</a>
                     </div>
                 </nav>
             </header>
-
+            <h1>Welcome to CampusConnect</h1>
             <div class="posts">
-                <div class="post-box">Post 1</div>
-                <div class="post-box">Post 2</div>
-                <div class="post-box">Post 3</div>
-                <div class="post-box">Post 4</div>
+                <div class="post-box">
+                    <img src="https://placehold.co/300x200?text=Hackathon+Event" alt="Students participating in a hackathon" class="post-image">
+                    <h3>Annual Hackathon: Code for Change</h3>
+                    <p>Join us for a 48-hour coding marathon to solve real-world problems. Great prizes and networking opportunities await!</p>
+                </div>
+                <div class="post-box">
+                    <img src="https://placehold.co/300x200?text=Green+Campus" alt="Students planting trees on campus" class="post-image">
+                    <h3>Green Campus Initiative Kicks Off</h3>
+                    <p>Be part of our sustainability drive! Join fellow students in planting trees and setting up recycling stations across campus.</p>
+                </div>
+                <div class="post-box">
+                    <img src="https://placehold.co/300x200?text=Guest+Lecture" alt="Famous entrepreneur giving a lecture" class="post-image">
+                    <h3>Guest Lecture: Tech Entrepreneurship</h3>
+                    <p>Don't miss out on an inspiring talk by Silicon Valley veteran and CEO of TechNova, Sarah Johnson. Limited seats available!</p>
+                </div>
+                <div class="post-box">
+                    <img src="https://placehold.co/300x200?text=Art+Exhibition" alt="Student artwork on display" class="post-image">
+                    <h3>Annual Student Art Exhibition</h3>
+                    <p>Explore the creative talents of our students at the upcoming art show. Photography, paintings, sculptures, and more on display.</p>
+                </div>
             </div>
-        </div>
+        </main>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide icons
+            lucide.createIcons();
+
+            // Add hover effect to post boxes
+            document.querySelectorAll('.post-box').forEach(box => {
+                box.addEventListener('mouseenter', () => {
+                    box.style.transform = 'translateY(-5px)';
+                });
+
+                box.addEventListener('mouseleave', () => {
+                    box.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add active class to current nav link
+            const currentPage = window.location.pathname.split("/").pop();
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
+
