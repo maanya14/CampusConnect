@@ -7,7 +7,7 @@
     <title>LOGIN PAGE</title>
 </head>
 <body>
-<div class="background"></div>
+    <div class="background"></div>
     <h1 id="heading">Campus Connect</h1>
     <div class="loginbox">
         <input type="text" name="username" id="email" placeholder="Enter your email" required>
@@ -19,8 +19,8 @@
         <input type="submit" name="signup" id="signupButton" value="Sign Up">
     </div>
     <script>
-        document.getElementById('signupButton').addEventListener('click',function(event){
-window.location.href='signup.html';
+        document.getElementById('signupButton').addEventListener('click', function(event) {
+            window.location.href = 'signup.html';
         });
         document.getElementById('loginButton').addEventListener('click', function(event) {
             event.preventDefault(); // Prevent the default form submission
@@ -34,8 +34,7 @@ window.location.href='signup.html';
                 // Redirect or perform other actions here
             } else if (!email.endsWith('@mail.jiit.ac.in')) {
                 alert("Email must end with @mail.jiit.ac.in.");
-            } 
-                 else {
+            } else {
                 alert('Invalid email or password. Please try again.');
             }
         });
