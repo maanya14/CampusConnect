@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_password = $conn->real_escape_string($user_password);
 
     // Query to check if the email exists and the password matches
-    $sql = "SELECT * FROM student WHERE email = '$email' AND password = '$user_password'";
+    $sql = "SELECT * FROM 'student' WHERE email = '$email' AND password = '$user_password'";
 
     // Execute the query
     $result = $conn->query($sql);

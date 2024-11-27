@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert the data into the database
-    $sql = "INSERT INTO students (name, enrollment, gsuitid, gender, dob, batch, branch, password)
+    $sql = "INSERT INTO 'student' ('name', 'enrollment', 'gsuitid', 'gender', 'dob', 'batch','branch', 'password')
             VALUES ('$name', '$enrollment', '$gsuitid', '$gender', '$dob', '$batch', '$branch', '$hashed_password')";
 
     if ($conn->query($sql) === TRUE) {
