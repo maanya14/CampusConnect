@@ -33,6 +33,6 @@ document.getElementById('password-set-form').onsubmit = function(e) {
     showSection('success-message');
     setTimeout(function() {
         // Redirect to the new page
-        window.location.href = 'https://example.com/new-page';
+        window.location.href = '2nd.html';
     }, 2000);
 };

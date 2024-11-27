@@ -175,6 +175,10 @@ header{
     position: static;
 }
 
+.cta-button a{
+    text-decoration: none;
+    color: white;
+}
 .left-column {
     margin-bottom: 40px;
     margin-top: 110px;

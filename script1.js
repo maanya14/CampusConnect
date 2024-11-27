@@ -5,22 +5,56 @@ let messageIndex = 0;
 
 setInterval(() => {
     marquee.textContent = messages[messageIndex];
-    messageIndex = (messageIndex + 1) % messages.length;}, 5000); // Changes every 3 seconds
+    messageIndex = (messageIndex + 1) % messages.length;
+}, 5000); // Changes every 5 seconds
 
-//Javascript for contact us
-function validateemail()  
-{  
-var x=document.myform.email.value;  
-var y=document.myform.name.value;
-var z=document.myform.message.value;
-var atposition=x.indexOf("@");  
-var dotposition=x.lastIndexOf(".");  
-if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
-    alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);  
-    return false;  
-    } 
-if (!email.endsWith('@mail.jiit.ac.in')) {
-        alert("Email must end with @mail.jiit.ac.in.");
+// Javascript for contact us
+function validateEmail(email) {
+    var atposition = email.indexOf("@");
+    var dotposition = email.lastIndexOf(".");
+    if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
         return false;
-  }  
-}  
+    }
+    return email.endsWith('@mail.jiit.ac.in');
+}
+
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+    
+    if (name.trim() === '') {
+        alert("Please enter your name.");
+        return;
+    }
+    
+    if (!validateEmail(email)) {
+        alert("Please enter a valid email address");
+        return;
+    }
+    
+    if (message.trim() === '') {
+        alert("Please enter a message.");
+        return;
+    }
+    
+    // If all validations pass, submit the form
+    var formData = new FormData(this);
+    
+    fetch('contact.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('feedbackMessage').innerHTML = data;
+        document.getElementById('feedbackMessage').style.display = 'block';
+        document.getElementById('contactForm').reset();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
+});
