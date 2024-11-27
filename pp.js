@@ -25,14 +25,38 @@ document.getElementById('password-set-form').onsubmit = function(e) {
     e.preventDefault();
     var password = document.getElementById('password').value;
     var confirmPassword = document.getElementById('confirm-password').value;
+    
     if (password !== confirmPassword) {
         alert('Passwords do not match!');
         return;
     }
+
     studentInfo.password = password;
+
+    // Show the success message immediately after pressing submit
     showSection('success-message');
-    setTimeout(function() {
-        // Redirect to the new page
-        window.location.href = '2nd.html';
-    }, 2000);
+
+    // Submit the data to the server
+    fetch('signup.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams(studentInfo).toString()
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data.trim() === 'success') {
+            setTimeout(function() {
+                window.location.href = '2nd.html';
+            }, 2000);
+        } else {
+            alert('Error: ' + data);
+            showSection('signup-form'); // Redirect back to the form on error
+        }
+    })
+    .catch(error => {
+        alert('An error occurred: ' + error.message);
+        showSection('signup-form');
+    });
 };

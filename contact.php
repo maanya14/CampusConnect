@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = ""; 
@@ -15,18 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $message = mysqli_real_escape_string($conn, $_POST['message']);
     
-    $sql = "INSERT INTO `feedback` (`name`, `email`, `message`) VALUES (?, ?, ?)";
-    
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sss", $name, $email, $message);
-    
-    if (mysqli_stmt_execute($stmt)) {
-        echo "<div class="feedback"><p>Your feedback has been successfully uploaded to our servers—and our hearts. 💾❤️</p></div>";
+    // Prepare the SQL query
+    $sql = "INSERT INTO `feedback` (email, name, message,created_at) VALUES ('$email', '$name', '$message',current_timestamp())";
+    if (mysqli_query($conn, $sql)) {
+        // Output success message to be shown in the front end
+        echo "Thank you for your feedback!";
     } else {
-        echo "<div class='error'>Error: " . mysqli_error($conn) . "</div>";
+        echo "Error: " . mysqli_error($conn);
     }
-    
-    mysqli_stmt_close($stmt);
 }
 
 mysqli_close($conn);

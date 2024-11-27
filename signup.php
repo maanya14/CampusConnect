@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 }
 
 // Check if the request is a POST request (form submission)
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     // Get the personal information
     $name = $conn->real_escape_string($_POST['name']);
     $enrollment = $conn->real_escape_string($_POST['enrollment']);
@@ -28,14 +28,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $branch = $conn->real_escape_string($_POST['branch']);
     
     // Get the password
-    $password = $conn->real_escape_string($_POST['password']);
+    $password = $conn->real_escape_string($_POST['confirm_password']);
     
     // Password hashing for security
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert the data into the database
-    $sql = "INSERT INTO 'student' ('name', 'enrollment', 'gsuitid', 'gender', 'dob', 'batch','branch', 'password')
-            VALUES ('$name', '$enrollment', '$gsuitid', '$gender', '$dob', '$batch', '$branch', '$hashed_password')";
+    $sql = "INSERT INTO student (name, enrollment, gsuitid, gender, dob, batch, branch, password)
+        VALUES ('$name', '$enrollment', '$gsuitid', '$gender', '$dob', '$batch', '$branch', '$hashed_password')";
+
 
     if ($conn->query($sql) === TRUE) {
         echo "success"; // Return success message to JavaScript
