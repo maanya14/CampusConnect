@@ -42,14 +42,20 @@ function likePost(postId, button) {
     // Define what happens on successful data submission
     xhr.onload = function() {
         if (xhr.status === 200) {
-            if (xhr.responseText === 'success') {
+            // Parse the JSON response from the server
+            var response = JSON.parse(xhr.responseText);
+            
+            // Check if the response was successful
+            if (response.status === 'success') {
                 // Update the like count in the button
                 var likeCountSpan = button.querySelector('.like-count');
                 var currentLikes = parseInt(likeCountSpan.textContent);
-                likeCountSpan.textContent = currentLikes + 1;
+                likeCountSpan.textContent = response.likes;
             } else {
-                console.error('Error liking post');
+                console.error('Error liking post: ' + response.message);
             }
+        } else {
+            console.error('Error with request: ' + xhr.status);
         }
     };
     

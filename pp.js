@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(form);
         
         // Send data to PHP using basic fetch
-        fetch('pp.php', {
+        fetch('signup.php', {
             method: 'POST',
             body: formData
         })
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Redirect after 2 seconds
                 setTimeout(function() {
-                    window.location.href = '2nd.html';
+                    window.location.href = '1.html';
                 }, 2000);
             } else {
                 // Show error message
