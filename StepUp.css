@@ -359,6 +359,15 @@ footer {
     justify-content: space-between;
     align-items: center;
 }
+.footer-content button{
+    background: none;
+    border: none;
+    color: #8B4513;
+}
+.footer-content button :hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
 
 .social-links a {
     color: #8B4513;

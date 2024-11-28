@@ -31,34 +31,25 @@ function validateForm() {
             return true; // Allow form submission if all validations pass
 }
 
-function likePost(postId, button) {
-    // Create a new XMLHttpRequest object
-    var xhr = new XMLHttpRequest();
-    
-    // Configure it to send a POST request to like_post.php
-    xhr.open('POST', 'like_post.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    
-    // Define what happens on successful data submission
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            // Parse the JSON response from the server
-            var response = JSON.parse(xhr.responseText);
-            
-            // Check if the response was successful
-            if (response.status === 'success') {
-                // Update the like count in the button
-                var likeCountSpan = button.querySelector('.like-count');
-                var currentLikes = parseInt(likeCountSpan.textContent);
-                likeCountSpan.textContent = response.likes;
-            } else {
-                console.error('Error liking post: ' + response.message);
-            }
-        } else {
-            console.error('Error with request: ' + xhr.status);
-        }
-    };
-    
-    // Send the request
-    xhr.send('post_id=' + postId);
+/// Function to toggle like/unlike a post
+function toggleLike(event) {
+    const button = event.target.closest('button');  // Get the button clicked
+    const likeCountSpan = button.querySelector(".like-count");
+    const heartIcon = button.querySelector("i");
+    let currentLikes = parseInt(likeCountSpan.textContent);
+
+    if (heartIcon.classList.contains("fa-heart")) {  // If heart is unfilled (unliked)
+        heartIcon.classList.remove("fa-heart");  // Change to filled heart
+        heartIcon.classList.add("fa-heart-solid");
+        likeCountSpan.textContent = currentLikes + 1;  // Increment likes
+    } else {  // If heart is filled (liked)
+        heartIcon.classList.remove("fa-heart-solid");  // Change to unfilled heart
+        heartIcon.classList.add("fa-heart");
+        likeCountSpan.textContent = currentLikes - 1;  // Decrement likes
+    }
+}
+
+// Function to open contact page
+function openContactUs(event) {
+    window.location.href = 'contact.php';  // Navigate to the contact page
 }

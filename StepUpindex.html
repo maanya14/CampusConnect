@@ -18,7 +18,7 @@
                 <a href="StepUpindex.html" class="active">StepUp</a>
                 <a href="insights.html" >Insights</a>
                 <a href="buzz.html">Buzz</a>
-                <a href="pp.html">Profile</a>
+                <a href="pp.html" onclick="openContactUs()">Profile</a> <!-- Updated for JavaScript trigger -->
             </div>
             <div class="search">
                 <input type="text" placeholder="Search" class="search-input">
@@ -56,9 +56,9 @@
                     </div>
                     <div class="post-footer">
                         <span class="post-date">Apr 14, 2023</span>
-                        <button class="like-button" onclick="likePost(1,this)" data-post-id="1">
-                            ❤️ <span class="like-count">0</span>
-                        </button>                        
+                        <button class="like-button" onclick="toggleLike(event)" data-post-id="1">
+                            <i class="fa fa-heart"></i> <span class="like-count">0</span>
+                        </button>                       
                     </div>
                 </div>
     
@@ -75,10 +75,9 @@
                     </div>
                     <div class="post-footer">
                         <span class="post-date">May 10, 2023</span>
-                        <button class="like-button" onclick="likePost(2,this)" data-post-id="2">
-                            ❤️ <span class="like-count">0</span>
+                        <button class="like-button" onclick="toggleLike(event)" data-post-id="2">
+                            <i class="fa fa-heart"></i> <span class="like-count">0</span>
                         </button>
-                        
                     </div>
                 </div>
         
@@ -95,10 +94,9 @@
                     </div>
                     <div class="post-footer">
                         <span class="post-date">Jun 5, 2023</span>
-                        <button class="like-button" onclick="likePost(3,this)" data-post-id="3">
-                            ❤️ <span class="like-count">0</span>
+                        <button class="like-button" onclick="toggleLike(event)" data-post-id="3">
+                            <i class="fa fa-heart"></i> <span class="like-count">0</span>
                         </button>
-                        
                     </div>
                 </div>
         
@@ -115,14 +113,12 @@
                     </div>
                     <div class="post-footer">
                         <span class="post-date">Jul 1, 2023</span>
-                        <button class="like-button" onclick="likePost(4,this)" data-post-id="4">
-                            ❤️ <span class="like-count">0</span>
+                        <button class="like-button" onclick="toggleLike(event)" data-post-id="4">
+                            <i class="fa fa-heart"></i> <span class="like-count">0</span>
                         </button>
-                        
                     </div>
                 </div>
             </div>
-            
         </div>
 
         <div class="right-column">
@@ -158,8 +154,8 @@
         </div>
         <footer>
             <div class="footer-content">
-                <p >Webpage Designed by Maanya and Team</p>
-                <p ><a href="contact.php">Contact Us</a></p>
+                <p>Webpage Designed by Maanya and Team</p>
+                <p><button onclick="openContactUs(event)">Contact Us</button></p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/jiitofficial/"><i class="fab fa-facebook"></i></a>
                     <a href="https://x.com/JaypeeUniversi2"><i class="fab fa-twitter"></i></a>
@@ -170,7 +166,8 @@
         </footer>
         <script src="script1.js"></script>
     </main>
-    
+
 </body>
 </html>
+
 
