@@ -15,7 +15,8 @@
     <main>
         <div class="loginbox" id="signup-form">
             <h2>Student Signup</h2>
-            <form id="student-info-form" action="signup.php" method="POST">
+            <!-- Updated the form action to point to the PHP script -->
+            <form id="student-info-form" action="pp.php" method="POST">
                 <input type="text" name="name" id="name" placeholder="Name" required>
                 <input type="text" name="enrollment" id="enrollment" placeholder="Enrollment No." required>
                 <input type="email" name="gsuitid" id="gsuitid" placeholder="GSuit ID" required>
@@ -32,11 +33,9 @@
                 <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm Password" required>
                 <input type="submit" name="submit" value="Sign Up">
             </form>
-            
-    
         </div>
 
-        <div class="loginbox" id="success-message">
+        <div class="loginbox" id="success-message" style="display: none;">
             <h2>Successfully Signed Up!</h2>
             <p>Redirecting to your home...</p>
         </div>
