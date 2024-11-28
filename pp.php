@@ -45,10 +45,9 @@ if ($result->num_rows == 0) {
     // Table doesn't exist, create it
     $createTableQuery = "
         CREATE TABLE $tableName (
-            id INT AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             enrollment VARCHAR(50) NOT NULL UNIQUE,
-            gsuitid VARCHAR(255) NOT NULL UNIQUE,
+            gsuitid VARCHAR(255) PRIMARY KEY,
             gender ENUM('male', 'female', 'other') NOT NULL,
             dob DATE NOT NULL,
             batch VARCHAR(50) NOT NULL,
@@ -70,26 +69,25 @@ if ($result->num_rows == 0) {
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
-    $name = $_POST['name'];
-    $enrollment = $_POST['enrollment'];
-    $gsuitid = $_POST['gsuitid'];
-    $gender = $_POST['gender'];
-    $dob = $_POST['dob'];
-    $batch = $_POST['batch'];
-    $branch = $_POST['branch'];
+    $name = $conn->real_escape_string($_POST['name']);
+    $enrollment = $conn->real_escape_string($_POST['enrollment']);
+    $gsuitid = $conn->real_escape_string($_POST['gsuitid']);
+    $gender = $conn->real_escape_string($_POST['gender']);
+    $dob = $conn->real_escape_string($_POST['dob']);
+    $batch = $conn->real_escape_string($_POST['batch']);
+    $branch = $conn->real_escape_string($_POST['branch']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password for security
 
-    // Insert data into the table
-    $stmt = $conn->prepare("INSERT INTO $tableName (name, enrollment, gsuitid, gender, dob, batch, branch, password) 
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssss", $name, $enrollment, $gsuitid, $gender, $dob, $batch, $branch, $password);
+    // Construct the query
+    $query = "INSERT INTO $tableName (name, enrollment, gsuitid, gender, dob, batch, branch, password) 
+              VALUES ('$name', '$enrollment', '$gsuitid', '$gender', '$dob', '$batch', '$branch', '$password')";
 
-    if ($stmt->execute()) {
+    // Execute the query
+    if ($conn->query($query) === TRUE) {
         echo "Record added successfully.<br>";
     } else {
-        echo "Error: " . $stmt->error . "<br>";
+        echo "Error: " . $conn->error . "<br>";
     }
-    $stmt->close();
 }
 
 // Close the database connection
