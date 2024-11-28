@@ -3,24 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Profile | Campus Connect</title>
+    <title>StepUp | Campus Connect</title>
     <link rel="stylesheet" href="profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="navbar">
         <div class="logo">
-            <img src="jiit_logo.jpg" alt="JIIT Logo" id="navlogo">
-            <span>JIIT Campus Connect</span>
+            <a href="home.html"><img src="images/logo 5.jpg" alt="CampusConnect Logo" id="navlogo"></a>
+            <span>Campus Connect</span>
         </div>
         <nav class="nav-links">
-            <a href="#"><i class="fas fa-home"></i> Home</a>
-            <a href="#"><i class="fas fa-user-graduate"></i> Profile</a>
-            <a href="#"><i class="fas fa-cog"></i> Settings</a>
-            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="home.html"><i class="fas fa-home"></i> Home</a>
+            <a href="StepUpindex.html" class="active"><i class="fas fa-cogs"></i> StepUp</a>
+            <a href="insights.html"><i class="fas fa-chart-line"></i> Insights</a>
+            <a href="buzz.html"><i class="fas fa-bullhorn"></i> Buzz</a>
+            <a href="pp.html"><i class="fas fa-user"></i> Profile</a>
         </nav>
+        <div class="search">
+            <input type="text" placeholder="Search" class="search-input">
+            <button class="search-icon">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
     </header>
-
     <main class="container">
         <h1>Student Profile</h1>
         <div class="profile-card">
@@ -48,19 +54,20 @@
             </div>
         </div>
     </main>
-
     <footer>
         <div class="footer-content">
-            <p>&copy; 2023 JIIT Campus Connect. All rights reserved.</p>
+            <p>&copy; 2023 Campus Connect. All rights reserved.</p>
+            <p><a href="contact.html" target="_blank">Contact Us</a></p>
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/jiitofficial/"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/JaypeeUniversi2"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/school/jaypee-institute-of-information-technology/posts/?feedView=all"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/jiit.official/"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
-
     <script src="profile.js"></script>
 </body>
 </html>
+
+
