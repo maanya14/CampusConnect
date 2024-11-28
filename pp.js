@@ -1,62 +1,60 @@
-var studentInfo = {};
-
-function showSection(sectionId) {
-    var sections = ['signup-form', 'password-form', 'success-message'];
-    for (var i = 0; i < sections.length; i++) {
-        document.getElementById(sections[i]).style.display = sections[i] === sectionId ? 'block' : 'none';
-    }
-}
-
-document.getElementById('student-info-form').onsubmit = function(e) {
-    e.preventDefault();
-    studentInfo = {
-        name: document.getElementById('name').value,
-        enrollment: document.getElementById('enrollment').value,
-        gsuitid: document.getElementById('gsuitid').value,
-        gender: document.getElementById('gender').value,
-        dob: document.getElementById('dob').value,
-        batch: document.getElementById('batch').value,
-        branch: document.getElementById('branch').value
-    };
-    showSection('password-form');
-};
-
-document.getElementById('password-set-form').onsubmit = function(e) {
-    e.preventDefault();
-    var password = document.getElementById('password').value;
-    var confirmPassword = document.getElementById('confirm-password').value;
+// Wait for the DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the form element
+    const form = document.getElementById('student-info-form');
     
-    if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-    }
-
-    studentInfo.password = password;
-
-    // Show the success message immediately after pressing submit
-    showSection('success-message');
-
-    // Submit the data to the server
-    fetch('signup.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams(studentInfo).toString()
-    })
-    .then(response => response.text())
-    .then(data => {
-        if (data.trim() === 'success') {
-            setTimeout(function() {
-                window.location.href = '2nd.html';
-            }, 2000);
-        } else {
-            alert('Error: ' + data);
-            showSection('signup-form'); // Redirect back to the form on error
+    // Add submit event listener to the form
+    form.addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+        
+        // Get password fields
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+        
+        // Basic password validation
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            return false;
         }
-    })
-    .catch(error => {
-        alert('An error occurred: ' + error.message);
-        showSection('signup-form');
+        
+        // Basic enrollment number validation (assuming it should be numbers only)
+        const enrollment = document.getElementById('enrollment').value;
+        if (!/^\d+$/.test(enrollment)) {
+            alert('Enrollment number should contain only numbers!');
+            return false;
+        }
+        
+        // If all validations pass, submit the form
+        const formData = new FormData(form);
+        
+        // Send data to PHP using basic fetch
+        fetch('pp.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(function(response) {
+            return response.text();
+        })
+        .then(function(data) {
+            // Check if the response contains success message
+            if (data.includes('Record added successfully')) {
+                // Hide the form
+                document.getElementById('signup-form').style.display = 'none';
+                // Show success message
+                document.getElementById('success-message').style.display = 'block';
+                
+                // Redirect after 2 seconds
+                setTimeout(function() {
+                    window.location.href = '2nd.html';
+                }, 2000);
+            } else {
+                // Show error message
+                alert('Error: ' + data);
+            }
+        })
+        .catch(function(error) {
+            alert('Error: ' + error.message);
+        });
     });
-};
+});
