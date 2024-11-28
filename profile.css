@@ -1,6 +1,7 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #F5F5CB;
+    font-family: 'Arial', sans-serif;
+    background-color: #FAF3E0; /* Light beige/cream background */
+    color: #333333; /* Dark gray text for contrast */
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,19 +14,19 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #7B0A0A;
+    background-color: #6D4F47; /* Rich brown for the navbar */
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
     display: flex;
     align-items: center;
-    color: white;
+    color: #F2E1D6; /* Light color for the logo */
     font-size: 20px;
     font-weight: bold;
 }
@@ -38,17 +39,18 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: white;
+    color: #F2E1D6; /* Light color for navigation links */
     padding: 10px 15px;
     font-weight: bold;
     font-size: 16px;
     border-radius: 5px;
     margin-left: 10px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .nav-links a:hover {
-    background-color: rgba(255,255,255,0.1);
+    background-color: #8D6E63; /* Darker shade of brown for hover */
+    color: #FFFFFF; /* White text on hover */
 }
 
 .container {
@@ -56,24 +58,27 @@ body {
     margin: 100px auto 40px;
     padding: 20px;
     flex-grow: 1;
+    background-color: #FAF3E0; /* White background for main content */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
-    color: #7B0A0A;
+    color: #6D4F47; /* Dark brown for headers */
     margin-bottom: 30px;
 }
 
 .profile-card {
-    background-color: #F5F5DC;
+    background-color: #FAF3E0; /* Light beige/cream card */
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
 .profile-header {
-    background-color: #7B0A0A;
-    color: white;
+    background-color: #8D6E63; /* Medium brown */
+    color: #FFFFFF; /* White text */
     padding: 30px;
     text-align: center;
 }
@@ -82,7 +87,7 @@ h1 {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 5px solid #F5F5DC;
+    border: 5px solid #D6A188; /* Soft reddish-brown border */
     object-fit: cover;
     margin-bottom: 15px;
 }
@@ -107,8 +112,8 @@ h1 {
 }
 
 .info-group h3 {
-    color: #7B0A0A;
-    border-bottom: 2px solid #7B0A0A;
+    color: #6D4F47; /* Dark brown for section headings */
+    border-bottom: 2px solid #8D6E63; /* Darker brown border */
     padding-bottom: 10px;
     margin-bottom: 15px;
 }
@@ -120,12 +125,12 @@ h1 {
 
 strong {
     font-weight: bold;
-    color: #7B0A0A;
+    color: #8D6E63; /* Medium brown */
 }
 
 footer {
-    background-color: #7B0A0A;
-    color: white;
+    background-color: #6D4F47; /* Dark brown footer */
+    color: #F2E1D6; /* Light text */
     padding: 20px 0;
     text-align: center;
 }
@@ -139,14 +144,15 @@ footer {
 }
 
 .social-links a {
-    color: white;
+    color: #F2E1D6; /* Light color for social links */
     font-size: 20px;
     margin: 0 10px;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, color 0.3s;
 }
 
 .social-links a:hover {
     opacity: 0.8;
+    color: #D6A188; /* Soft reddish-brown */
 }
 
 @media (max-width: 768px) {
