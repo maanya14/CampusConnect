@@ -3,48 +3,78 @@
 session_start();
 
 // Database connection variables
-$servername = "localhost";  // Database server (usually localhost)
-$username = "root";         // Database username (default is root)
-$password = "";             // Database password (usually empty in local development)
-$dbname = "campus_connect"; // Database name
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "campus_connect";
+
+// Default admin credentials
+$default_admin_email = "admin@mail.jiit.ac.in";
+$default_admin_password = "admin123"; // Hardcoded admin credentials
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check 
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the email and password from the POST data
-    $email = $_POST['email'];
-    $user_password = $_POST['password'];
+    // Get and sanitize the email and password from the POST data
+    $email = $conn->real_escape_string(trim($_POST['email']));
+    $user_password = $conn->real_escape_string(trim($_POST['password']));
 
-    // Sanitize the email to prevent SQL Injection
-    $email = $conn->real_escape_string($email);
-    $user_password = $conn->real_escape_string($user_password);
+    // Check if the credentials match the default admin credentials
+    if ($email === $default_admin_email && $user_password === $default_admin_password) {
+        // Set session variables for the admin
+        $_SESSION['email'] = $default_admin_email;
+        $_SESSION['name'] = 'Admin'; // Display name for the admin
 
-    // Query to check if the email exists and the password matches
-    $sql = "SELECT * FROM 'student' WHERE email = '$email' AND password = '$user_password'";
+        // Redirect to admin dashboard
+        header("Location: admin_dashboard.php");
+        exit();
+    }
 
-    // Execute the query
+    // Query to check if the email exists in the database for regular users
+    $sql = "SELECT * FROM student WHERE email = '$email'";
     $result = $conn->query($sql);
 
-    // Check if the query returned any results
     if ($result->num_rows > 0) {
-        // User exists, login is successful
-        $_SESSION['email'] = $email;  // Store the email in the session
-        // Redirect to a dashboard or home page
-        header("Location: dashboard.php");
-        exit();
+        // Fetch the user's data
+        $user = $result->fetch_assoc();
+
+        // Verify the password (assuming it's hashed in the database)
+        if (password_verify($user_password, $user['password'])) {
+            // Successful login, set session variables
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['name'] = $user['name']; // Optional: store the user's name
+
+            // Redirect to student page (2nd.html)
+            header("Location: 2nd.html");
+            exit();
+        } else {
+            // Incorrect password
+            $error_message = "Invalid email or password.";
+        }
     } else {
-        // User doesn't exist or incorrect credentials
-        echo "<script>alert('Invalid email or password. Please try again.');</script>";
+        // No user found with the given email, redirect to signup page
+        header("Location: pp.html"); // Replace with your signup page
+        exit();
     }
 }
 
 // Close the connection
 $conn->close();
 ?>
+
+
+
+
+
+
+
+
+
+

@@ -4,44 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>LOGIN PAGE</title>
+    <title>Campus Connect - Login</title>
 </head>
 <body>
     <div class="background"></div>
     <h1 id="heading">Campus Connect</h1>
- 
-        <form action="login.php" method="POST">
-            <div class="loginbox">
-        <input type="text" name="username" id="email" placeholder="Enter your email" required>
-        <br>
-        <input type="password" name="password" id="password" placeholder="********" required>
-        <br>
-        <input type="submit" name="submit" id="loginButton" value="Login">
-        <br>
-        <input type="submit" name="signup" id="signupButton" value="Sign Up">
+
+    <form action="login.php" method="POST" id="loginForm">
+        <div class="loginbox">
+            <h2>Login</h2>
+            <input type="email" name="email" id="email" placeholder="Enter your email" required>
+            <br>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+            <br>
+            <button type="submit" id="loginButton">Login</button>
+            <br>
+            <button type="button" id="signupButton">Sign Up</button>
         </div>
-        </form>
-   
+    </form>
+
     <script>
-        document.getElementById('signupButton').addEventListener('click', function(event) {
-            window.location.href = 'pp.html';
-        });
-        document.getElementById('loginButton').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
+        // Email validation: Ensure email ends with '@mail.jiit.ac.in'
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
             const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
 
-            // Check if the email ends with @mail.jiit.ac.in
-            if (email.endsWith('@mail.jiit.ac.in')) {
-                window.location.href = '2nd.html';
-                // Redirect or perform other actions here
-            } else if (!email.endsWith('@mail.jiit.ac.in')) {
-                alert("Email must end with @mail.jiit.ac.in.");
-            } else {
-                alert('Invalid email or password. Please try again.');
+            // Check if email ends with '@mail.jiit.ac.in'
+            if (!email.endsWith('@mail.jiit.ac.in')) {
+                event.preventDefault(); // Prevent form submission
+                alert("Email must end with '@mail.jiit.ac.in'.");
             }
+        });
+
+        // Redirect to the signup page when the Sign-Up button is clicked
+        document.getElementById('signupButton').addEventListener('click', function() {
+            window.location.href = 'pp.html'; // Replace with the actual signup page path
         });
     </script>
 </body>
 </html>
+
