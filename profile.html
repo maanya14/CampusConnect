@@ -28,28 +28,28 @@
         </div>
     </header>
     <main class="container">
-        <h1>Student Profile</h1>
-        <div class="profile-card">
+    <h1>Student Profile</h1>
+    <div class="profile-card">
+        <?php if ($student): ?>
             <div class="profile-header">
-                <img id="profile-image" src="default-avatar.jpg" alt="Student Photo">
-                <h2 id="student-name"></h2>
-                <p id="student-branch"></p>
+                <h2 id="student-name"><?= htmlspecialchars($student['name']) ?></h2>
+                <p id="student-branch"><?= htmlspecialchars($student['branch']) ?></p>
             </div>
             <div class="profile-body">
                 <div class="info-group">
-                    <h3><i class="fas fa-id-card"></i> Personal Information</h3>
-                    <p><strong>Enrollment No:</strong> <span id="enrollment"></span></p>
-                    <p><strong>Gender:</strong> <span id="gender"></span></p>
-                    <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
+                    <h3>Personal Information</h3>
+                    <p><strong>Enrollment No:</strong> <?= htmlspecialchars($student['enrollment_no']) ?></p>
+                    <p><strong>Gender:</strong> <?= htmlspecialchars($student['gender']) ?></p>
+                    <p><strong>Date of Birth:</strong> <?= htmlspecialchars($student['dob']) ?></p>
                 </div>
                 <div class="info-group">
-                    <h3><i class="fas fa-graduation-cap"></i> Academic Information</h3>
-                    <p><strong>Batch:</strong> <span id="batch"></span></p>
-                    <p><strong>Branch:</strong> <span id="branch"></span></p>
+                    <h3>Academic Information</h3>
+                    <p><strong>Batch:</strong> <?= htmlspecialchars($student['batch']) ?></p>
+                    <p><strong>Branch:</strong> <?= htmlspecialchars($student['branch']) ?></p>
                 </div>
                 <div class="info-group">
-                    <h3><i class="fas fa-envelope"></i> Contact Information</h3>
-                    <p><strong>GSuit ID:</strong> <span id="gsuitid"></span></p>
+                    <h3>Contact Information</h3>
+                    <p><strong>GSuit ID:</strong> <?= htmlspecialchars($student['gsuit_id']) ?></p>
                 </div>
             </div>
         </div>
@@ -69,5 +69,4 @@
     <script src="profile.js"></script>
 </body>
 </html>
-
 
