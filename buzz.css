@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #F5F5CB;
+    background-color: #FAF3E0; /* Light Beige/Cream */
     color: #333;
     line-height: 1.6;
 }
@@ -16,7 +16,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    background-color: #7B0A0A;
+    background-color: #6D4F47; /* Rich Brown */
     color: white;
     position: fixed;
     top: 0;
@@ -112,7 +112,7 @@ body {
 }
 
 .learn-button {
-    background-color: #007BFF;
+    background-color: #8D6E63; /* Medium Brown */
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -124,7 +124,7 @@ body {
 }
 
 .learn-button:hover {
-    background-color: #0056b3;
+    background-color: #6D4F47; /* Darker Brown */
 }
 
 .container {
@@ -148,9 +148,9 @@ body {
 }
 
 h2 {
-    color: #7B0A0A;
+    color: #6D4F47; /* Rich Brown */
     margin-bottom: 1rem;
-    border-bottom: 2px solid #7B0A0A;
+    border-bottom: 2px solid #6D4F47; /* Rich Brown */
     padding-bottom: 0.5rem;
 }
 
@@ -161,7 +161,7 @@ h2 {
 }
 
 .card {
-    background-color: white;
+    background-color: #FAF3E0; /* Light Beige/Cream */
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -175,14 +175,14 @@ h2 {
 
 .priority {
     position: relative;
-    border: 2px solid #ffc107;
+    border: 2px solid #D6A188; /* Soft Reddish-Brown */
 }
 
 .notification-icon {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    background-color: #ffc107;
+    background-color: #D6A188; /* Soft Reddish-Brown */
     color: white;
     width: 24px;
     height: 24px;
@@ -194,7 +194,7 @@ h2 {
 }
 
 .explore-button {
-    background-color: #28a745;
+    background-color: #8D6E63; /* Medium Brown */
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -207,11 +207,11 @@ h2 {
 }
 
 .explore-button:hover {
-    background-color: #218838;
+    background-color: #6D4F47; /* Darker Brown */
 }
 
 footer {
-    background-color: #7B0A0A;
+    background-color: #6D4F47; /* Rich Brown */
     color: white;
     text-align: center;
     padding: 2rem 0;
