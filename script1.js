@@ -9,43 +9,24 @@ setInterval(() => {
 }, 5000); // Changes every 5 seconds
 
 // Javascript for contact us
-function validateemail(email) {
-    var atposition = email.indexOf("@");
-    var dotposition = email.lastIndexOf(".");
-    if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
-        return false;
-    }
-    return email.endsWith('@mail.jiit.ac.in');
-}
+function validateForm() {
+            // Get the field values
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
 
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Prevent form from submitting the usual way
+            // Check if any field is empty
+            if (name === "" || email === "" || message === "") {
+                alert('All fields are required!');
+                return false; // Prevent form submission
+            }
 
-    var name = document.getElementById('name').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var message = document.getElementById('message').value.trim();
-    
-    if (name === '') {
-        alert("Please enter your name.");
-        return;
-    }
-    
-    if (!validateemail(email)) {
-        alert("Please enter a valid JIIT email address.");
-        return;
-    }
-    
-    if (message === '') {
-        alert("Please enter a message.");
-        return;
-    }
+            // Email validation for .jiit.mail.ac.in domain
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@mail\.jiit\.ac\.in$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address ending with @mail.jiit.ac.in');
+                return false; // Prevent form submission
+            }
 
-    // Hide the form
-    document.getElementById('contactForm').style.display = 'none';
-    
-    // Show the thank you message
-    document.getElementById('feedbackMessage').style.display = 'block';
-
-    // Optionally, you can send the form data to a PHP script here using AJAX (if needed)
-    // For now, the form is just being hidden and thank you message is displayed without actual form submission.
-});
+            return true; // Allow form submission if all validations pass
+        }
