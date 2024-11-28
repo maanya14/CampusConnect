@@ -97,6 +97,17 @@ header{
     color: #555;
 }
 
+.logo {
+    width: 30px;     
+    height: auto;    
+    margin-right: 10px; 
+}
+#navlogo{
+    height: 45px;
+    border-radius: 50%;
+
+}
+
 /* Main content adjustments */
 .main {
     margin-top: 70px;
@@ -202,11 +213,7 @@ header{
     margin-bottom: 40px;
 }
 
-.logo {
-    width: 30px;     
-    height: auto;    
-    margin-right: 10px; 
-}
+
 
 /* Adding responsiveness */
 @media (max-width: 768px) {
@@ -247,11 +254,7 @@ header{
     z-index: 1000; /* Keep the headline on top of other content */
     
 }
-#navlogo{
-    height: 45px;
-    border-radius: 50%;
 
-}
 .post-grid {
     margin-top: 30px;
     display: flex;

@@ -29,4 +29,30 @@ function validateForm() {
             }
 
             return true; // Allow form submission if all validations pass
+}
+
+function likePost(postId, button) {
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+    
+    // Configure it to send a POST request to like_post.php
+    xhr.open('POST', 'like_post.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    // Define what happens on successful data submission
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            if (xhr.responseText === 'success') {
+                // Update the like count in the button
+                var likeCountSpan = button.querySelector('.like-count');
+                var currentLikes = parseInt(likeCountSpan.textContent);
+                likeCountSpan.textContent = currentLikes + 1;
+            } else {
+                console.error('Error liking post');
+            }
         }
+    };
+    
+    // Send the request
+    xhr.send('post_id=' + postId);
+}
