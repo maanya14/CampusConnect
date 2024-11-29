@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +7,11 @@
     <title>CampusConnect - Home</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body{
-        background-color: white;
-        padding: 0;
-        margin: 0;
-        }  
+        body {
+            background-color: white;
+            padding: 0;
+            margin: 0;
+        }
         :root {
             --primary-color: #8B4513;
             --secondary-color: #aa7c3f;
@@ -19,15 +20,15 @@
             --sidebar-width: 300px;
         }
 
-        header{
-        margin: 0;
-        z-index: 10;
-        padding: 0;
-        top: 0;
-        left: 300px;
-        width: 1050px;
-        position: fixed;
-}
+        header {
+            margin: 0;
+            z-index: 10;
+            padding: 0;
+            top: 0;
+            left: 300px;
+            width: 1050px;
+            position: fixed;
+        }
 
         * {
             margin: 0;
@@ -156,12 +157,13 @@
         }
 
         .nav-links {
-        display: flex;           
-        justify-content: space-around;           
-        list-style: none;   
-        flex-grow: 1;  /* Allow nav-links to grow and fill available space */
-        margin-left: 20px;  /* Adjust margin for better alignment */
-}
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+
         .nav-links a {
             margin-left: 20px;
             text-decoration: none;
@@ -175,20 +177,21 @@
         }
 
         .nav-links a::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        bottom: -5px;
-        left: 0;
-        background-color: #fff;
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #fff;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
         .nav-links a:hover::after {
-        transform: scaleX(1);
+            transform: scaleX(1);
         }
+
         h1 {
             margin-bottom: 20px;
             color: var(--primary-color);
@@ -238,30 +241,44 @@
             margin: 5px;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
+        /* Modal & Start Chat Styles */
+        .new-chat-modal {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            border-radius: 10px;
+        }
 
-            .sidebar {
-                width: 100%;
-                order: 2;
-            }
+        .new-chat-modal textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+        }
 
-            .main-content {
-                order: 1;
-            }
+        #start-chat-btn {
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-            .nav-links {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                margin-top: 10px;
-            }
-
-            .nav-links a {
-                margin: 0;
-            }
+        #send-chat-btn {
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -271,14 +288,14 @@
         <aside class="sidebar">
             <!-- Search Bar -->
             <div class="search-bar">
-                <input type="text" name="chats" placeholder="Search chats...">
+                <input type="text" id="search-chat" placeholder="Search chats...">
                 <i class="lucide lucide-search"></i>
             </div>
     
             <!-- Profile Section -->
             <div class="profile-section">
                 <div class="profile-img">
-                    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Devyani Sharma">
+                    <img src="https://via.placeholder.com/50x50?text=Chat" alt="Chat Icon">
                 </div>
                 <div class="profile-name">Devyani Sharma</div>
             </div>
@@ -286,32 +303,15 @@
             <!-- Chat Section -->
             <div class="chat-section">
                 <h2>Recent Chats</h2>
-                <div class="chat-item">
-                    <div class="chat-profile-img">
-                        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Maanya Gupta">
-                    </div>
-                    <div class="chat-info">
-                        <div class="chat-name">Maanya Gupta</div>
-                        <div class="chat-last-msg">Hey, how's the project going?</div>
-                    </div>
+                <div id="chat-list">
+                    <!-- Chat items will be dynamically inserted here -->
                 </div>
-                 <div class="chat-item">
-                    <div class="chat-profile-img">
-                        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Shambhavi Mishra">
-                    </div>
-                    <div class="chat-info">
-                        <div class="chat-name">Shambhavi Mishra</div>
-                        <div class="chat-last-msg">Hey, how's the project going?</div>
-                    </div>
+                <div class="start-chat">
+                    <button id="start-chat-btn">Start Chat</button>
                 </div>
-                <div class="chat-item">
-                    <div class="chat-profile-img">
-                        <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Anushka Tayal">
-                    </div>
-                    <div class="chat-info">
-                        <div class="chat-name">Anushka Tayal</div>
-                        <div class="chat-last-msg">Thanks for the study notes!</div>
-                    </div>
+                <div class="new-chat-modal" id="new-chat-modal">
+                    <textarea id="new-chat-msg" placeholder="Write your message..."></textarea>
+                    <button id="send-chat-btn">Send</button>
                 </div>
             </div>
         </aside>
@@ -335,55 +335,104 @@
                 </nav>
             </header>
             <h1>Welcome to CampusConnect</h1>
-            <div class="posts">
-                <div class="post-box">
-                    <img src="https://placehold.co/300x200?text=Hackathon+Event" alt="Students participating in a hackathon" class="post-image">
-                    <h3>Annual Hackathon: Code for Change</h3>
-                    <p>Join us for a 48-hour coding marathon to solve real-world problems. Great prizes and networking opportunities await!</p>
-                </div>
-                <div class="post-box">
-                    <img src="https://placehold.co/300x200?text=Green+Campus" alt="Students planting trees on campus" class="post-image">
-                    <h3>Green Campus Initiative Kicks Off</h3>
-                    <p>Be part of our sustainability drive! Join fellow students in planting trees and setting up recycling stations across campus.</p>
-                </div>
-                <div class="post-box">
-                    <img src="https://placehold.co/300x200?text=Guest+Lecture" alt="Famous entrepreneur giving a lecture" class="post-image">
-                    <h3>Guest Lecture: Tech Entrepreneurship</h3>
-                    <p>Don't miss out on an inspiring talk by Silicon Valley veteran and CEO of TechNova, Sarah Johnson. Limited seats available!</p>
-                </div>
-                <div class="post-box">
-                    <img src="https://placehold.co/300x200?text=Art+Exhibition" alt="Student artwork on display" class="post-image">
-                    <h3>Annual Student Art Exhibition</h3>
-                    <p>Explore the creative talents of our students at the upcoming art show. Photography, paintings, sculptures, and more on display.</p>
-                </div>
+            <div class="posts" id="posts-container">
+                <!-- Post boxes will be dynamically inserted here -->
             </div>
         </main>
     </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', function () {
             lucide.createIcons();
 
-            // Add hover effect to post boxes
-            document.querySelectorAll('.post-box').forEach(box => {
-                box.addEventListener('mouseenter', () => {
-                    box.style.transform = 'translateY(-5px)';
-                });
+            const chatList = document.getElementById('chat-list');
+            const startChatBtn = document.getElementById('start-chat-btn');
+            const newChatModal = document.getElementById('new-chat-modal');
+            const sendChatBtn = document.getElementById('send-chat-btn');
+            const newChatMsg = document.getElementById('new-chat-msg');
+            const searchChatInput = document.getElementById('search-chat');
+            const postsContainer = document.getElementById('posts-container');
+            
+            // Dummy chat data
+            const chats = [
+                { name: 'Maanya Gupta', lastMessage: 'Hey, how\'s the project going?' },
+                { name: 'Shambhavi Mishra', lastMessage: 'Hey, how\'s the project going?' },
+                { name: 'Anushka Tayal', lastMessage: 'Thanks for the study notes!' },
+            ];
 
-                box.addEventListener('mouseleave', () => {
-                    box.style.transform = 'translateY(0)';
+            // Function to render chat items
+            function renderChats(chats) {
+                chatList.innerHTML = '';
+                chats.forEach(chat => {
+                    const chatItem = document.createElement('div');
+                    chatItem.classList.add('chat-item');
+                    chatItem.innerHTML = `
+                        <div class="chat-profile-img">
+                            <img src="https://via.placeholder.com/40x40?text=Chat" alt="Chat Icon">
+                        </div>
+                        <div class="chat-info">
+                            <div class="chat-name">${chat.name}</div>
+                            <div class="chat-last-msg">${chat.lastMessage}</div>
+                        </div>
+                    `;
+                    chatList.appendChild(chatItem);
                 });
+            }
+
+            // Render the initial chats
+            renderChats(chats);
+
+            // Start chat button click event
+            startChatBtn.addEventListener('click', function () {
+                newChatModal.style.display = 'block';
             });
 
-            // Add active class to current nav link
-            const currentPage = window.location.pathname.split("/").pop();
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
+            // Send chat button click event
+            sendChatBtn.addEventListener('click', function () {
+                const message = newChatMsg.value.trim();
+                if (message) {
+                    // Add new message to the top of the chat list
+                    chats.unshift({ name: 'You', lastMessage: message });
+                    renderChats(chats);
+                    newChatMsg.value = '';
+                    newChatModal.style.display = 'none';
                 }
             });
+
+            // Search chat functionality
+            searchChatInput.addEventListener('input', function () {
+                const searchQuery = searchChatInput.value.toLowerCase();
+                const filteredChats = chats.filter(chat => chat.name.toLowerCase().includes(searchQuery));
+                renderChats(filteredChats);
+            });
+
+            // Function to render posts dynamically (This would be handled by PHP in a real-world application)
+            const posts = [
+                { title: 'Annual Hackathon: Code for Change', description: 'Join us for a 48-hour coding marathon to solve real-world problems. Great prizes and networking opportunities await!', image: 'https://placehold.co/300x200?text=Hackathon+Event' },
+                { title: 'Green Campus Initiative Kicks Off', description: 'Be part of our sustainability drive! Join fellow students in planting trees and setting up recycling stations across campus.', image: 'https://placehold.co/300x200?text=Green+Campus' },
+                { title: 'Guest Lecture: Tech Entrepreneurship', description: 'Don\'t miss out on an inspiring talk by Silicon Valley veteran and CEO of TechNova, Sarah Johnson. Limited seats available!', image: 'https://placehold.co/300x200?text=Guest+Lecture' },
+                { title: 'Annual Student Art Exhibition', description: 'Explore the creative talents of our students at the upcoming art show. Photography, paintings, sculptures, and more on display.', image: 'https://placehold.co/300x200?text=Art+Exhibition' }
+            ];
+
+            function renderPosts(posts) {
+                postsContainer.innerHTML = '';
+                posts.forEach(post => {
+                    const postBox = document.createElement('div');
+                    postBox.classList.add('post-box');
+                    postBox.innerHTML = `
+                        <img src="${post.image}" alt="${post.title}" class="post-image">
+                        <div class="post-content">
+                            <h3>${post.title}</h3>
+                            <p>${post.description}</p>
+                        </div>
+                    `;
+                    postsContainer.appendChild(postBox);
+                });
+            }
+
+            // Render the posts
+            renderPosts(posts);
         });
     </script>
 </body>
 </html>
-
