@@ -1,24 +1,70 @@
 <?php
-// Start the session
-session_start();
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// Database connection variables
-$servername = "localhost";  // Database server
-$username = "root";         // Database username
-$password = "";             // Database password
-$dbname = "campus_connect"; // Database name
+// Database connection details
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "campus_connect";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Create connection to MySQL server (without specifying database initially)
+$conn = new mysqli($servername, $username, $password);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if the request is a POST request (form submission)
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    // Get the personal information
+// Check if the database exists, and create it if it doesn't
+$dbCheckQuery = "SHOW DATABASES LIKE '$dbname'";
+$result = $conn->query($dbCheckQuery);
+
+if ($result->num_rows == 0) {
+    // Database doesn't exist, create it
+    $createDbQuery = "CREATE DATABASE $dbname";
+    if ($conn->query($createDbQuery) === TRUE) {
+        echo "Database '$dbname' created successfully.<br>";
+    } else {
+        die("Error creating database: " . $conn->error);
+    }
+}
+
+// Connect to the specific database
+$conn->select_db($dbname);
+
+// Check if the table exists, and create it if it doesn't
+$tableName = "students";
+$tableCheckQuery = "SHOW TABLES LIKE '$tableName'";
+$result = $conn->query($tableCheckQuery);
+
+if ($result->num_rows == 0) {
+    // Table doesn't exist, create it
+    $createTableQuery = "
+        CREATE TABLE $tableName (
+            name VARCHAR(255) NOT NULL,
+            enrollment VARCHAR(50) NOT NULL UNIQUE,
+            gsuitid VARCHAR(255) PRIMARY KEY,
+            gender ENUM('male', 'female', 'other') NOT NULL,
+            dob DATE NOT NULL,
+            batch VARCHAR(50) NOT NULL,
+            branch VARCHAR(100) NOT NULL,
+            password VARCHAR(255) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ";
+
+    if ($conn->query($createTableQuery) === TRUE) {
+        echo "Table '$tableName' created successfully.<br>";
+    } else {
+        die("Error creating table: " . $conn->error);
+    }
+}
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data
     $name = $conn->real_escape_string($_POST['name']);
     $enrollment = $conn->real_escape_string($_POST['enrollment']);
     $gsuitid = $conn->real_escape_string($_POST['gsuitid']);
@@ -26,30 +72,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $dob = $conn->real_escape_string($_POST['dob']);
     $batch = $conn->real_escape_string($_POST['batch']);
     $branch = $conn->real_escape_string($_POST['branch']);
-    
-    // Get the password
-    $password = $conn->real_escape_string($_POST['confirm_password']);
-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-    
-    // Password hashing for security
-    
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password for security
 
-    // Insert the data into the database
-    $sql = "INSERT INTO student (name, enrollment, gsuitid, gender, dob, batch, branch, password)
-        VALUES ('$name', '$enrollment', '$gsuitid', '$gender', '$dob', '$batch', '$branch', '$hashedPassword')";
+    // Construct the query
+    $query = "INSERT INTO $tableName (name, enrollment, gsuitid, gender, dob, batch, branch, password) 
+              VALUES ('$name', '$enrollment', '$gsuitid', '$gender', '$dob', '$batch', '$branch', '$password')";
 
-
-    if ($conn->query($sql) === TRUE) {
-        echo "success"; // Return success message to JavaScript
+    // Execute the query
+    if ($conn->query($query) === TRUE) {
+        // Redirect to login.php after successful signup
+        header("Location: login.php");
+        exit(); // Ensure no further code executes
     } else {
-        echo "error"; // Return error message to JavaScript
+        echo "<p style='color: red;'>Error: " . $conn->error . "</p>";
     }
-
-    // Close the connection
-    $conn->close();
 }
-?>
 
+// Close the database connection
+$conn->close();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,8 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     <main>
         <div class="loginbox" id="signup-form">
             <h2>Student Signup</h2>
-            <!-- Updated the form action to point to the PHP script -->
-            <form id="student-info-form" action="pp.php" method="POST">
+            <form id="student-info-form" action="" method="POST">
                 <input type="text" name="name" id="name" placeholder="Name" required>
                 <input type="text" name="enrollment" id="enrollment" placeholder="Enrollment No." required>
                 <input type="email" name="gsuitid" id="gsuitid" placeholder="GSuit ID" required>
@@ -87,13 +127,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 <input type="submit" name="submit" value="Sign Up">
             </form>
         </div>
-
-        <div class="loginbox" id="success-message" style="display: none;">
-            <h2>Successfully Signed Up!</h2>
-            <p>Redirecting to your home...</p>
-        </div>
     </main>
+	<script>
+    		document.getElementById('student-info-form').addEventListener('submit', function (event) {
+        	const password = document.getElementById('password').value;
+        	const confirmPassword = document.getElementById('confirm-password').value;
 
-    <script src="pp.js"></script>
+        	if (password !== confirmPassword) {
+           	 alert('Passwords do not match!');
+           	 event.preventDefault(); // Prevent the form from submitting
+        	}
+   	 });
+	</script>
+
 </body>
 </html>
