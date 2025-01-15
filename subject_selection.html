@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Subject</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 80px;
+            height: 100vh;
+            color: #333;
+            /* background-repeat: no-repeat;
+            background-size: cover; 
+            background-position: center; */
+            margin: 0;
+            background-color: #F5F5DC;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: black;
+        }
+
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #7B0A0A;
+            padding: 20px 20px;
+            color: white;
+            box-sizing: border-box;
+            height: 50px;
+        }
+
+        .logo img {
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .nav-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-icon {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+        }
+
+
+
+        .post-grid {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .post-card:nth-child(1) {
+            grid-column: 1;
+        }
+
+        .post-card:nth-child(2) {
+            grid-column: 2;
+        }
+
+        .post-card:nth-child(3) {
+            grid-column: 3;
+        }
+
+        /* Center the two bottom cards in the second row */
+
+
+
+        .post-card:nth-child(4),
+        .post-card:nth-child(5) {
+            grid-column: span 1 / span 1;
+            justify-self: center;
+            /* Center the two items in the second row */
+        }
+
+        header {
+            margin: 0;
+            z-index: 10;
+            padding: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            position: fixed;
+        }
+
+
+
+
+
+        .post-card {
+            display: flex;
+            flex-direction: column;
+            /* height: 100%; Allow content to determine height */
+            background-color: #774E24;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            /* height:400px;
+    /*margin: 20px;*/
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .post-card:hover {
+            transform: scale(1.05);
+        }
+
+        .post-tag {
+            background-color: #7B0A0A;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+
+        .post-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            /* Cover entire div without white spaces */
+            display: block;
+
+        }
+
+        .post-body {
+            padding: 10px;
+            /* background-color: #774E24;*/
+            color: white;
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .post-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: white;
+            text-align: center;
+        }
+
+        .post-meta {
+            font-size: 14px;
+            color: white;
+        }
+
+        form {
+            width: 320px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 10px auto;
+        }
+
+        form input[type="text"],
+        form input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        form button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #774e24;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-right: 20px;
+
+        }
+
+        .search-input {
+            padding: 10px 40px 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            width: 250px;
+            /* Adjust width of the search box */
+            font-size: 16px;
+        }
+
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-icon i {
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home.html"><img src="photos/campus.jpeg" alt="CampusConnect Logo" id="navlogo"></a>
+            </div>
+            <div class="nav-links">
+                <a href="home.html">Home</a>
+                <a href="insights.html">Insights</a>
+                <a href="buzz.html">Buzz</a>
+                <a href="profile.html">Profile</a>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Search" class="search-input">
+                <button class="search-icon">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <h1>Select a Subject</h1>
+
+    <div class="post-grid">
+        <div class="post-card">
+
+            <div class="post-image">
+                <img src="photos/ds.webp" alt="Maanya Gupta, Google Placement">
+            </div>
+            <div class="post-body">
+                <h3 class="post-title">DATA STRUCTURE</h3>
+
+            </div>
+
+        </div>
+
+        <div class="post-card" onclick="navigateToMaterial()">
+            <a href="material.html"></a>
+            <div class="post-image">
+                <img src="photos/webd.webp" alt="Maanya Gupta, Microsoft Placement">
+            </div>
+            <div class="post-body">
+                <h3 class="post-title">DATABASE SYSTEM AND WEB</h3>
+
+            </div>
+
+        </div>
+
+        <div class="post-card">
+
+            <div class="post-image">
+                <img src="photos/tfcs.jpeg" alt="Maanya Gupta, Amazon Placement">
+            </div>
+            <div class="post-body">
+                <h3 class="post-title">TFCS</h3>
+
+            </div>
+
+        </div>
+
+        <div class="post-card">
+
+            <div class="post-image">
+                <img src="photos/es.jpeg" alt="Maanya Gupta, Apple Placement">
+            </div>
+            <div class="post-body">
+                <h3 class="post-title">ELECTRICAL SCIENCE-2</h3>
+
+            </div>
+
+        </div>
+
+        <div class="post-card">
+
+            <div class="post-image">
+                <img src="photos/eco.jpg" alt="Maanya Gupta, Apple Placement">
+            </div>
+            <div class="post-body">
+                <h3 class="post-title">ECONOMICS</h3>
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const term = urlParams.get('term');
+        const option = urlParams.get('option');
+        const year = urlParams.get('year');
+
+        console.log(`Selected Term: ${term}, Option: ${option}, Year: ${year}`);
+
+
+        function navigateToMaterial() {
+            window.location.href = "material.html";
+        }
+
+    </script>
+
+</body>
+
+</html>

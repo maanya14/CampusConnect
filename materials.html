@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Resources</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f5dc;
+            /* Soft yellow background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a4023;
+            /* Darker color for the heading */
+            padding: 20px 0;
+            margin: 0;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 150px);
+            /* Full height minus heading */
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            justify-content: space-around;
+            gap: 20px;
+            /* Add space between sections */
+
+        }
+
+        /* Section styling */
+        .section {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid #8b5c30;
+            box-sizing: border-box;
+            overflow-y: auto;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            /* Slightly lifts the box on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .section h2 {
+            color: #8b5c30;
+            /* Brown color for section headings */
+            border-bottom: 2px solid #8b5c30;
+            padding-bottom: 5px;
+            text-align: center;
+            margin-top: 0;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* List styling */
+        .content-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            margin: 0;
+        }
+
+        .content-list li {
+            margin: 8px 0;
+            transition: color 0.2s ease;
+        }
+
+        .content-list li a {
+            color: #4a4023;
+            /* Text color */
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.2s ease;
+        }
+
+        .content-list li a:hover {
+            color: #8b5c30;
+            /* Brown color for link hover */
+            text-decoration: underline;
+        }
+
+        /* Scrollbar styling */
+        .section::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .section::-webkit-scrollbar-track {
+            background: #f9f5dc;
+            /* Matches background color */
+        }
+
+        .section::-webkit-scrollbar-thumb {
+            background: #8b5c30;
+            /* Brown color for scrollbar */
+            border-radius: 4px;
+        }
+
+        .section::-webkit-scrollbar-thumb:hover {
+            background: #4a4023;
+            /* Darker brown on hover */
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Academic Resources</h1>
+    <div class="container">
+
+        <!-- Tutorial Sheets Section -->
+        <div class="section" id="tutorial-sheets">
+            <h2>Tutorial Sheets</h2>
+            <ul class="content-list">
+                <li><a href="Tutorial1.docx">Tutorial Sheet 1</a></li>
+                <li><a href="Tutorial2.docx">Tutorial Sheet 2</a></li>
+                <li><a href="Tutorial3.docx">Tutorial Sheet 3</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+        </div>
+
+        <!-- Class Notes Section -->
+        <div class="section" id="class-notes">
+            <h2>Class Notes</h2>
+            <ul class="content-list">
+                <li><a href="HTML Notes.pdf">Class Note 1</a></li>
+                <li><a href="CSS Notes.pdf">Class Note 2</a></li>
+                <li><a href="JavaScript Notes.pdf">Class Note 3</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+        </div>
+
+        <!-- PYQ Section -->
+        <div class="section" id="pyq">
+            <h2>Previous Year Question Papers (PYQ)</h2>
+            <ul class="content-list">
+                <li><a href="PYQ1.docx">PYQ 2023</a></li>
+                <li><a href="PYQ2.docx">PYQ 2022</a></li>
+                <li><a href="PYQ3.pdf">PYQ 2021</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

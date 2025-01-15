@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StepUp</title>
+    <link rel="stylesheet" href="StepUp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home.html"><img src="images/logo 5.jpg" alt="CampusConnect Logo" id="navlogo"></a>
+            </div>
+            <div class="nav-links">
+                <a href="2nd.html">Home</a>
+                <a href="StepUpindex.html" class="active">StepUp</a>
+                <a href="insights.html">Insights</a>
+                <a href="buzz.html">Buzz</a>
+                <a href="profile.php" onclick="openContactUs()">Profile</a> <!-- Updated for JavaScript trigger -->
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Search" class="search-input">
+                <button class="search-icon">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="floating-headline">
+        <marquee direction="right" scrollamount="8">Welcome to CampusConnect!</marquee>
+    </div>
+
+    <main>
+        <div class="left-column">
+            <div class="top-story">
+                <div class="banner-text">
+                    <h1>Story of Success</h1>
+                    <button class="cta-button"><a href="https://www.jiit.ac.in/about-jiit">View Story</a></button>
+                </div>
+            </div>
+
+            <div class="post-grid">
+                <div class="post-card">
+                    <div class="post-header">
+                        <span class="post-tag">Google</span>
+                    </div>
+                    <div class="post-image">
+                        <img src="images/maanya.jpg" alt="Maanya Gupta, Google Placement">
+                    </div>
+                    <div class="post-body">
+                        <h3 class="post-title">Maanya Gupta, 50LPA</h3>
+                        <p class="post-meta">@maanya.g14 • B.Tech CS</p>
+                    </div>
+                    <div class="post-footer">
+                        <span class="post-date">Apr 14, 2023</span>
+                        <button class="like-button" onclick="toggleLike(event)" data-post-id="1">
+                            <i class="fa fa-heart"></i> <span class="like-count">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-header">
+                        <span class="post-tag">Microsoft</span>
+                    </div>
+                    <div class="post-image">
+                        <img src="images/maanya.jpg" alt="Maanya Gupta, Microsoft Placement">
+                    </div>
+                    <div class="post-body">
+                        <h3 class="post-title">Maanya Gupta, 45LPA</h3>
+                        <p class="post-meta">@maanya.g14 • B.Tech CS</p>
+                    </div>
+                    <div class="post-footer">
+                        <span class="post-date">May 10, 2023</span>
+                        <button class="like-button" onclick="toggleLike(event)" data-post-id="2">
+                            <i class="fa fa-heart"></i> <span class="like-count">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-header">
+                        <span class="post-tag">Amazon</span>
+                    </div>
+                    <div class="post-image">
+                        <img src="images/maanya.jpg" alt="Maanya Gupta, Amazon Placement">
+                    </div>
+                    <div class="post-body">
+                        <h3 class="post-title">Maanya Gupta, 55LPA</h3>
+                        <p class="post-meta">@maanya.g14 • B.Tech CS</p>
+                    </div>
+                    <div class="post-footer">
+                        <span class="post-date">Jun 5, 2023</span>
+                        <button class="like-button" onclick="toggleLike(event)" data-post-id="3">
+                            <i class="fa fa-heart"></i> <span class="like-count">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-header">
+                        <span class="post-tag">Apple</span>
+                    </div>
+                    <div class="post-image">
+                        <img src="images/maanya.jpg" alt="Maanya Gupta, Apple Placement">
+                    </div>
+                    <div class="post-body">
+                        <h3 class="post-title">Maanya Gupta, 60LPA</h3>
+                        <p class="post-meta">@maanya.g14 • B.Tech CS</p>
+                    </div>
+                    <div class="post-footer">
+                        <span class="post-date">Jul 1, 2023</span>
+                        <button class="like-button" onclick="toggleLike(event)" data-post-id="4">
+                            <i class="fa fa-heart"></i> <span class="like-count">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="top-companies">
+                <h3>Top Companies Visited</h3>
+                <ul>
+                    <li><img src="images/Accenture-Emblem - Copy.png" alt="Accenture" class="logo">Accenture</li>
+                    <li><img src="images/Microsoft_logo.png" alt="Microsoft" class="logo">Microsoft</li>
+                    <li><img src="images/tcs.jpg" alt="TCS" class="logo">TCS</li>
+                    <li><img src="images/IBM.jpg" alt="IBM" class="logo">IBM</li>
+                    <li><img src="images/google.png" alt="Google" class="logo">Google</li>
+                </ul>
+            </div>
+
+            <div class="package">
+                <h3>Highest Package</h3>
+                <ul>
+                    <li><img src="images/Microsoft_logo.png" alt="Microsoft">Microsoft: 80 LPA</li>
+                    <li><img src="images/Accenture-Emblem - Copy.png" alt="Accenture">Accenture: 50 LPA</li>
+                </ul>
+            </div>
+
+            <div class="cgpa-section">
+                <h3>CGPA Criteria</h3>
+                <ul>
+                    <li>Accenture: 8.0</li>
+                    <li>Microsoft: 8.2</li>
+                    <li>TCS: 7.0</li>
+                    <li>IBM: 6.9</li>
+                    <li>Google: 8.0</li>
+                </ul>
+            </div>
+        </div>
+        <footer>
+            <div class="footer-content">
+                <p>Webpage Designed by Maanya and Team</p>
+                <p><button onclick="openContactUs(event)">Contact Us</button></p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/jiitofficial/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/JaypeeUniversi2"><i class="fab fa-twitter"></i></a>
+                    <a
+                        href="https://www.linkedin.com/school/jaypee-institute-of-information-technology/posts/?feedView=all"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/jiit.official/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
+        <script >
+            // Javascript for marquee tag
+            const marquee = document.querySelector('.floating-headline marquee');
+            const messages = ["Welcome to CampusConnect!", "Empowering Students!", "Discover Opportunities!"];
+            let messageIndex = 0;
+
+            setInterval(() => {
+            marquee.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+        }, 5000); // Changes every 5 seconds
+
+            // Javascript for contact us
+            function validateForm() {
+            // Get the field values
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+
+            // Check if any field is empty
+            if (name === "" || email === "" || message === "") {
+                alert('All fields are required!');
+                return false; // Prevent form submission
+            }
+
+            // Email validation for .jiit.mail.ac.in domain
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@mail\.jiit\.ac\.in$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address ending with @mail.jiit.ac.in');
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission if all validations pass
+            }
+
+            /// Function to toggle like/unlike a post
+            function toggleLike(event) {
+            const button = event.target.closest('button');  // Get the button clicked
+            const likeCountSpan = button.querySelector(".like-count");
+            const heartIcon = button.querySelector("i");
+            let currentLikes = parseInt(likeCountSpan.textContent);
+
+            if (heartIcon.classList.contains("fa-heart")) {  // If heart is unfilled (unliked)
+            heartIcon.classList.remove("fa-heart");  // Change to filled heart
+            heartIcon.classList.add("fa-heart-solid");
+            likeCountSpan.textContent = currentLikes + 1;  // Increment likes
+            } else {  // If heart is filled (liked)
+            heartIcon.classList.remove("fa-heart-solid");  // Change to unfilled heart
+            heartIcon.classList.add("fa-heart");
+            likeCountSpan.textContent = currentLikes - 1;  // Decrement likes
+            }
+        }
+
+            // Function to open contact page
+            function openContactUs(event) {
+            window.location.href = 'contact.php';  // Navigate to the contact page
+        }           
+        </script>
+    </main>
+
+</body>
+
+</html>

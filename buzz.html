@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUZZ | Campus Connect</title>
+    <link rel="stylesheet" href="buzz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="home.html"><img src="images/logo 5.jpg" alt="CampusConnect Logo" id="navlogo"></a>
+            <span>Campus Connect</span>
+        </div>
+        <nav class="nav-links">
+            <a href="2nd.html"><i class="fas fa-home"></i> Home</a>
+            <a href="StepUpindex.html" class="active"><i class="fas fa-cogs"></i> StepUp</a>
+            <a href="insights.html"><i class="fas fa-chart-line"></i> Insights</a>
+            <a href="buzz.html"><i class="fas fa-bullhorn"></i> Buzz</a>
+            <a href="profile.php"><i class="fas fa-user"></i> Profile</a>
+        </nav>
+        <div class="search">
+            <input type="text" placeholder="Search" class="search-input">
+            <button class="search-icon">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="rotating-images">
+            <img id="rotatingImage" src="images\jiit2.jpeg" alt="JIIT Campus">
+        </div>
+        <div class="hero-overlay">
+            <h1>Hype Hub HQ: Career & Culture</h1>
+            <p>Stay in the loop with the latest vibes from campus! Societies, training tips, and placement updates – all the hype, all in one spot. Let's get you connected!</p>
+            <button class="learn-button">Learn More</button>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="announcement">
+            <h2>Culture Vibes Central</h2>
+            <div class="card-grid">
+                <div class="card priority">
+                    <span class="notification-icon"><i class="fas fa-exclamation"></i></span>
+                    <h3>Announcement Title 1</h3>
+                    <p>Short description for announcement 1.</p>
+                </div>
+                <div class="card">
+                    <h3>Announcement Title 2</h3>
+                    <p>Short description for announcement 2.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="college">
+            <h2>Tech Titans Tribune</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>College Name 1</h3>
+                    <p>Brief information about College 1.</p>
+                </div>
+                <div class="card">
+                    <h3>College Name 2</h3>
+                    <p>Brief information about College 2.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="updates">
+            <h2>Sports Sprint</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Update Title 1</h3>
+                    <p>Brief information about Update 1.</p>
+                </div>
+                <div class="card">
+                    <h3>Update Title 2</h3>
+                    <p>Brief information about Update 2.</p>
+                </div>
+            </div>
+        </section>
+
+	<section class="updates">
+            <h2>HUB</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Update Title 1</h3>
+                    <p>Brief information about Update 1.</p>
+                </div>
+                <div class="card">
+                    <h3>Update Title 2</h3>
+                    <p>Brief information about Update 2.</p>
+                </div>
+            </div>
+        </section>
+
+	<section class="updates">
+            <h2>JYC Jam Chronicles</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Recent Event Title</h3>
+                    <p>Details about the recent event.</p>
+                </div>
+                <div class="card">
+                    <h3>Recent Event Title</h3>
+                    <p>Details about the recent event.</p>
+                </div>
+            </div>
+        </section>
+
+	<section class="updates">
+            <h2>Career Launchpad</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Update Title 1</h3>
+                    <p>Brief information about Update 1.</p>
+                </div>
+                <div class="card">
+                    <h3>Update Title 2</h3>
+                    <p>Brief information about Update 2.</p>
+                </div>
+            </div>
+        </section>
+        </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Campus Connect. All rights reserved.</p>
+            <p><a href="contact.html" target="_blank">Contact Us</a></p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/jiitofficial/"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/JaypeeUniversi2"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/school/jaypee-institute-of-information-technology/posts/?feedView=all"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/jiit.official/"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script >
+        var rotatingImage = document.getElementById("rotatingImage");
+        var imagePaths = [
+            "images/jiit1.webp",
+            "images/jiit3.jpeg",
+            "images/jiit2.jpeg"
+        ];
+        var currentImageIndex = 0;
+
+        function rotateImages() {
+            currentImageIndex = currentImageIndex + 1;
+            if (currentImageIndex >= imagePaths.length) {
+                currentImageIndex = 0;
+            }
+            rotatingImage.src = imagePaths[currentImageIndex];
+        }
+
+        setInterval(rotateImages, 5000); 
+
+    </script>
+</body>
+</html>
